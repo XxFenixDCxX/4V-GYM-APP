@@ -1,4 +1,3 @@
-import { Activity } from './global-service.service';
 import { Injectable } from '@angular/core';
 import { LoggerServiceService } from './logger-service.service';
 export interface Activity {
@@ -97,5 +96,17 @@ export class GlobalServiceService {
       monitor.id = 0;
     }
     this.monitors = this.monitors.concat(monitor);
+  }
+  removeActivity(activityId: number) {
+    this.logger.log("Eliminando actividad");
+    this.activitys = this.activitys.filter(activity => activity.id !== activityId);
+  }
+
+  removeMonitor(monitorId: number) {
+    this.logger.log("Eliminando monitor");
+    this.monitors = this.monitors.filter(monitor => monitor.id !== monitorId);
+    this.activitys.forEach(activity => {
+      activity.monitor = activity.monitor.filter(monitor => monitor.id !== monitorId);
+    });
   }
 }
