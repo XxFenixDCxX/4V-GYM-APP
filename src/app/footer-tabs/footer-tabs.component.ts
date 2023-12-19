@@ -1,9 +1,4 @@
-import { Component } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ActivitysComponent } from '../activitys/activitys.component';
-import { MonitorsComponent } from '../monitors/monitors.component';
-
+import { Component, EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-footer-tabs',
   standalone: true,
@@ -12,5 +7,11 @@ import { MonitorsComponent } from '../monitors/monitors.component';
   styleUrl: './footer-tabs.component.scss'
 })
 export class FooterTabsComponent {
-  
+  @Output() optionSelected: EventEmitter<string> = new EventEmitter<string>();
+
+  constructor() {}
+
+  selectOption(option: string): void {
+    this.optionSelected.emit(option);
+  }
 }

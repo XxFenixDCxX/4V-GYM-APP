@@ -1,2 +1,4 @@
 <app-header></app-header>
-<app-footer-tabs></app-footer-tabs>
+<app-activitys *ngIf="selectedOption === 'activity'"></app-activitys>
+<app-monitors *ngIf="selectedOption === 'monitor'"></app-monitors>
+<app-footer-tabs (optionSelected)="updateSelectedOption($event)"></app-footer-tabs>
