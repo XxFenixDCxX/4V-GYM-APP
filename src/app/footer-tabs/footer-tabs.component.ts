@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { ActivitysComponent } from '../activitys/activitys.component';
+import { MonitorsComponent } from '../monitors/monitors.component';
 
 @Component({
   selector: 'app-footer-tabs',
@@ -8,5 +12,5 @@ import { Component } from '@angular/core';
   styleUrl: './footer-tabs.component.scss'
 })
 export class FooterTabsComponent {
-
+  
 }
