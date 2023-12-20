@@ -17,4 +17,12 @@ export class MonitorsComponent implements OnInit {
     this.monitors = this.globalService.getMonitors();
   }
 
+  removeMonitor(monitorId: number | undefined): void {
+    if (monitorId !== undefined) {
+      // Llama al método removeMonitor del servicio GlobalServiceService
+      this.globalService.removeMonitor(monitorId);
+      // Actualiza la lista de monitores después de la eliminación
+      this.monitors = this.globalService.getMonitors();
+    }
+  }
 }
