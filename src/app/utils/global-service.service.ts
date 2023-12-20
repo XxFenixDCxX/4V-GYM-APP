@@ -35,14 +35,14 @@ export class GlobalServiceService {
       {
         id: 1,
         nombre: "Maria",
-        email: "juan@gmail.com",
-        telefono: "948128888"
+        email: "maria@gmail.com",
+        telefono: "676950699"
       },
       {
         id: 2,
         nombre: "Pedro",
-        email: "juan@gmail.com",
-        telefono: "948128888"
+        email: "pedro@gmail.com",
+        telefono: "674735847"
       }
     ]
     this.activitys = [

@@ -16,19 +16,28 @@
         <i class="fa-solid fa-plus"></i>
     </button>
 </div>
-<div class="ml-10 mr-10 max-w-sm rounded overflow-hidden shadow-lg bg-gray-300 relative">
-    <div class="absolute top-0 left-0 p-2">
-        <i class="fa-solid fa-pencil-alt text-amber-600"></i>
-    </div>
-    <div class="absolute top-0 right-0 p-2">
-        <i class="fa-solid fa-trash-alt text-amber-600"></i>
-    </div>
-    <div class="text-center mt-10 text-amber-600 text-8xl">
-        <i class="fa-solid fa-user"></i>
-    </div>
-    <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2 text-center">Nombre del usuario</div>
-        <p class="text-gray-700 text-base mb-2 text-center">correo.com</p>
-        <p class="text-gray-700 text-base text-center">123-456-7890</p>
-    </div>
+
+<div class="carousel">
+    <carousel [itemsPerSlide]="3">
+        <slide *ngFor="let monitor of monitors">
+            <div class="ml-10 mr-10 rounded overflow-hidden shadow-lg bg-gray-300 relative">
+                <div class="absolute top-0 left-0 p-2">
+                    <i class="fa-solid fa-pencil-alt text-amber-600"></i>
+                </div>
+                <div class="absolute top-0 right-0 p-2">
+                    <i class="fa-solid fa-trash-alt text-amber-600"></i>
+                </div>
+                <div class="text-center mt-10 text-amber-600 text-8xl">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2 text-center">{{monitor.nombre}}</div>
+                    <div class="flex items-center justify-center">
+                        <a href="malito:{{ monitor.email }}" class="text-gray-700 text-base mb-2 inline-block">{{ monitor.email }}</a>
+                        <a href="tel:+34{{monitor.telefono}}" class="text-gray-700 text-base mb-2 inline-block">{{monitor.telefono}}</a>
+                    </div>
+                </div>
+            </div>
+        </slide>
+    </carousel>
 </div>
