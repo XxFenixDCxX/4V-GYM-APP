@@ -19,32 +19,32 @@
 
 <!-- Verifica si hay monitores antes de mostrar el carousel -->
 <div *ngIf="monitors && monitors.length > 0">
-    <div class="carousel mt-5 ml-10 mr-10">
-        <carousel [itemsPerSlide]="3" [showIndicators]="false">
-            <slide *ngFor="let monitor of monitors">
-                <div class="ml-10 mr-10 rounded overflow-hidden shadow-lg bg-gray-300 relative">
-                    <div class="absolute top-0 left-0 p-2">
-                        <i class="fa-solid fa-pencil-alt text-amber-600"></i>
+    <p-carousel [value]="monitors" [numVisible]="numVisible" [numScroll]="1" [circular]="true">
+        <ng-template let-monitor pTemplate="item">
+            <div class="mt-5 ml-10 mr-10 rounded overflow-hidden shadow-lg bg-gray-300 relative">
+                <div class="absolute top-0 left-0 p-2">
+                    <i class="fa-solid fa-pencil-alt text-amber-600"></i>
+                </div>
+                <div class="absolute top-0 right-0 p-2" (click)="removeMonitor(monitor.id)">
+                    <i class="fa-solid fa-trash-alt text-amber-600"></i>
+                </div>
+                <div class="text-center mt-10 text-amber-600 text-8xl">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2 text-center">{{ monitor.nombre }}</div>
+                    <div class="flex items-center justify-center space-y-2">
+                        <a href="malito:{{ monitor.email }}" class="text-gray-700 text-base inline-block">{{
+                            monitor.email }}</a>
                     </div>
-                    <div class="absolute top-0 right-0 p-2" (click)="removeMonitor(monitor.id)">
-                        <i class="fa-solid fa-trash-alt text-amber-600"></i>
-                    </div>
-                    <div class="text-center mt-10 text-amber-600 text-8xl">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
-                    <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2 text-center">{{ monitor.nombre }}</div>
-                        <div class="flex items-center justify-center space-y-2">
-                            <a href="malito:{{ monitor.email }}" class="text-gray-700 text-base inline-block">{{
-                                monitor.email }}</a><br>
-                            <a href="tel:+34{{ monitor.telefono }}" class="text-gray-700 text-base inline-block">{{
-                                monitor.telefono }}</a>
-                        </div>
+                    <div class="flex items-center justify-center space-y-2">
+                        <a href="tel:+34{{ monitor.telefono }}" class="text-gray-700 text-base inline-block">{{
+                            monitor.telefono }}</a>
                     </div>
                 </div>
-            </slide>
-        </carousel>
-    </div>
+            </div>
+        </ng-template>
+    </p-carousel>
 </div>
 
 <!-- Si no hay monitores, muestra un mensaje -->
