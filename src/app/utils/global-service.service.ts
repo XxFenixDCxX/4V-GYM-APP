@@ -43,6 +43,12 @@ export class GlobalServiceService {
         nombre: "Pedro",
         email: "pedro@gmail.com",
         telefono: "674735847"
+      },
+      {
+        id: 3,
+        nombre: "Mikel",
+        email: "mikel@gmail.com",
+        telefono: "696039394"
       }
     ]
     this.activitys = [
