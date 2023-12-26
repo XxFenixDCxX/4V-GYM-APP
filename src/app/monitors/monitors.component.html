@@ -1,17 +1,16 @@
 <div class="relative mt-2 ml-10 mr-10">
-    <div class="flex items-center">
-        <input type="text" name="price" id="price"
-            class="block w-full rounded-md border-2 border-amber-600 py-1.5 pl-7 pr-10 text-black placeholder:text-black focus:outline-none focus:border-amber-600 sm:text-sm sm:leading-5"
-            placeholder="Buscar..." aria-describedby="searcher">
-
-        <button type="button"
-            class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-500 focus:outline-none focus:text-gray-600"
-            aria-label="Buscar">
+    <div class="flex items-center mt-10">
+        <input type="text"  name="price" id="price" 
+               class="block w-full rounded-md border-2 border-amber-600 py-1.5 pl-7 pr-10 text-black placeholder:text-black focus:outline-none focus:border-amber-600 sm:text-sm sm:leading-5" 
+               placeholder="Buscar..." aria-describedby="searcher" [(ngModel)]="searchTerm">
+        <button type="button" class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-500 focus:outline-none focus:text-gray-600"
+            aria-label="Buscar" (click)="updateVisible()">
             <i class="fa-solid fa-search"></i>
         </button>
     </div>
 </div>
-<div class="flex items-center justify-between mt-2 ml-10 mr-10">
+
+<div class="flex items-center justify-between mt-10 ml-10 mr-10">
     <button type="button" class="ml-auto px-4 py-2 text-amber-600 font-bold text-7xl" aria-label="Botón Mas"
         (click)="openModal()">
         <i class="fa-solid fa-plus"></i>
@@ -59,8 +58,8 @@
 </div>
 
 <!-- Verifica si hay monitores antes de mostrar el carousel -->
-<div *ngIf="monitors && monitors.length > 0">
-    <p-carousel [value]="monitors" [numVisible]="numVisible" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+<div *ngIf="filteredMonitors && filteredMonitors.length > 0" class="mt-10">
+    <p-carousel [value]="filteredMonitors" [numVisible]="numVisible" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
         <ng-template let-monitor pTemplate="item">
             <div class="mt-5 ml-10 mr-10 rounded overflow-hidden shadow-lg bg-gray-300 relative">
                 <div class="absolute top-0 left-0 p-2" (click)="loadMonitor(monitor)">

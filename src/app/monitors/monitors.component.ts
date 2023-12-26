@@ -15,9 +15,11 @@ export class MonitorsComponent implements OnInit {
   numVisible: number = 3;
   newMonitor: Monitor = { nombre: '', email: '', telefono: '' };
   isModalOpen: boolean = false;
+  searchTerm: string = '';
+  filteredMonitors: Monitor[] = [];
   constructor(private globalService: GlobalServiceService) {}
   ngOnInit(): void {
-    this.monitors = this.globalService.getMonitors();
+    this.updateVisible();
   }
 
   openModal(): void {
@@ -43,6 +45,7 @@ export class MonitorsComponent implements OnInit {
     } else {
       // Agrega un nuevo monitor
       this.globalService.addMonitor(this.newMonitor);
+      this.updateVisible();
     }
   
     // Restablece el formulario y cierra el modal
@@ -54,7 +57,6 @@ export class MonitorsComponent implements OnInit {
       // Llama al método removeMonitor del servicio GlobalServiceService
       this.globalService.removeMonitor(monitorId);
       // Actualiza la lista de monitores después de la eliminación
-      this.monitors = this.globalService.getMonitors();
       this.updateVisible();
     }
   }
@@ -76,7 +78,13 @@ export class MonitorsComponent implements OnInit {
       numScroll: 1
     }
   ];
-  private updateVisible(): void {
-    this.numVisible = Math.min(this.responsiveOptions.find(opt => window.innerWidth <= Number(opt.breakpoint))?.numVisible || 3, this.monitors.length);
+  updateVisible(): void {
+    this.monitors = this.globalService.getMonitors();
+    if (this.searchTerm) {
+      this.filteredMonitors = this.monitors.filter(monitor => monitor.nombre.toLowerCase().includes(this.searchTerm.toLowerCase()));
+    }else{
+      this.filteredMonitors = this.monitors;
+    }
+    this.numVisible = Math.min(this.responsiveOptions.find(opt => window.innerWidth <= Number(opt.breakpoint))?.numVisible || 3, this.filteredMonitors.length);
   }
 }
