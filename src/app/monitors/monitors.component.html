@@ -60,7 +60,7 @@
 
 <!-- Verifica si hay monitores antes de mostrar el carousel -->
 <div *ngIf="monitors && monitors.length > 0">
-    <p-carousel [value]="monitors" [numVisible]="numVisible" [numScroll]="1" [circular]="true">
+    <p-carousel [value]="monitors" [numVisible]="numVisible" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
         <ng-template let-monitor pTemplate="item">
             <div class="mt-5 ml-10 mr-10 rounded overflow-hidden shadow-lg bg-gray-300 relative">
                 <div class="absolute top-0 left-0 p-2" (click)="loadMonitor(monitor)">

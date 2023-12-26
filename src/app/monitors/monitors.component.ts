@@ -61,22 +61,22 @@ export class MonitorsComponent implements OnInit {
   
   responsiveOptions = [
     {
-      breakpoint: 1024,
+      breakpoint: "1024px",
       numVisible: 3,
       numScroll: 3
     },
     {
-      breakpoint: 768,
+      breakpoint: "768px",
       numVisible: 2,
       numScroll: 2
     },
     {
-      breakpoint: 560,
+      breakpoint: "560px",
       numVisible: 1,
       numScroll: 1
     }
   ];
   private updateVisible(): void {
-    this.numVisible = Math.min(this.responsiveOptions.find(opt => window.innerWidth <= opt.breakpoint)?.numVisible || 3, this.monitors.length);
+    this.numVisible = Math.min(this.responsiveOptions.find(opt => window.innerWidth <= Number(opt.breakpoint))?.numVisible || 3, this.monitors.length);
   }
 }
