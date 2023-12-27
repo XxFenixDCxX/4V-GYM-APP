@@ -15,7 +15,7 @@ import { MonitorsComponent } from './monitors/monitors.component';
 })
 export class AppComponent {
   title = 'gymApp-ArkaitzCalvo';
-  selectedOption: string = '';
+  selectedOption: string = 'activity';
 
   updateSelectedOption(option: string): void {
     this.selectedOption = option;
