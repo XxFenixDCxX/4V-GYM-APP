@@ -5,14 +5,65 @@
                 (selectedChange)="onDateChange()"></mat-calendar>
         </mat-card>
     </div>
-    <div class="w-full md:w-1/2 flex justify-between items-center">
-        <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded" (click)="prevDay()">
-            <i class="fas fa-arrow-left"></i> Anterior
-        </button>
-        <p class="text-center" [ngClass]="{'text-red-500': stringContenido2 === 'Ninguno Seleccionado'}">
-            {{stringContenido2}}</p>
-        <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded" (click)="nextDay()">
-            Siguiente <i class="fas fa-arrow-right"></i>
-        </button>
+    <div class="w-full md:w-1/2">
+        <div class="mr-10">
+            <div class="flex justify-between items-center mt-10">
+                <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded"
+                    (click)="prevDay()">
+                    <i class="fas fa-arrow-left"></i> Anterior
+                </button>
+                <p class="text-center" [ngClass]="{'text-red-500': stringContenido2 === 'Ninguno Seleccionado'}">
+                    {{stringContenido2}}</p>
+                <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded"
+                    (click)="nextDay()">
+                    Siguiente <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <table class="w-full mt-10">
+                <tr>
+                    <td class="w-12">10:00 11:30</td>
+                    <td class="bg-green-500 h-20 relative" [ngClass]="{'bg-gray-300': cont1}">
+                        <ng-container *ngIf="cont1; else free">Información de la actividad</ng-container>
+                        <ng-template #free>
+                            <div class="flex justify-center items-center h-full text-white font-bold">
+                                FREE
+                                <button class="absolute top-0 right-0 mt-2 mr-2 text-xl text-bold text-amber-700">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </ng-template>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-12">13:30 15:00</td>
+                    <td class="bg-green-500 h-20 relative" [ngClass]="{'bg-gray-300': cont2}">
+                        <ng-container *ngIf="cont2; else free">Información de la actividad</ng-container>
+                        <ng-template #free>
+                            <div class="flex justify-center items-center h-full text-white font-bold">
+                                FREE
+                                <button class="absolute top-0 right-0 mt-2 mr-2 text-xl text-bold text-amber-700">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </ng-template>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-12">17:30 19:00</td>
+                    <td class="bg-green-500 h-20 relative" [ngClass]="{'bg-gray-300': cont3}">
+                        <ng-container *ngIf="cont3; else free">Información de la actividad</ng-container>
+                        <ng-template #free>
+                            <div class="flex justify-center items-center h-full text-white font-bold">
+                                FREE
+                                <button class="absolute top-0 right-0 mt-2 mr-2 text-xl text-bold text-amber-700">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </ng-template>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
