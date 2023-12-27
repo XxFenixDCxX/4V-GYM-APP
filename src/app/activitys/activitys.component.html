@@ -1,11 +1,18 @@
 <div class="flex flex-wrap">
     <div class="w-full md:w-1/2">
         <mat-card class="mt-10 ml-10 demo-inline-calendar-card">
-            <mat-calendar class="custom-calendar" [(selected)]="date" (selectedChange)="onDateChange()"></mat-calendar>
-            <p>{{date}}</p>
+            <mat-calendar class="custom-calendar text-amber-600" [(selected)]="date"
+                (selectedChange)="onDateChange()"></mat-calendar>
         </mat-card>
     </div>
-    <div class="w-full md:w-1/2">
-        <p>{{stringContenido2}}</p>
+    <div class="w-full md:w-1/2 flex justify-between items-center">
+        <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded" (click)="prevDay()">
+            <i class="fas fa-arrow-left"></i> Anterior
+        </button>
+        <p class="text-center" [ngClass]="{'text-red-500': stringContenido2 === 'Ninguno Seleccionado'}">
+            {{stringContenido2}}</p>
+        <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded" (click)="nextDay()">
+            Siguiente <i class="fas fa-arrow-right"></i>
+        </button>
     </div>
 </div>
