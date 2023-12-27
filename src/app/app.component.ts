@@ -6,6 +6,8 @@ import { FooterTabsComponent } from './footer-tabs/footer-tabs.component';
 import { ActivitysComponent } from './activitys/activitys.component';
 import { MonitorsComponent } from './monitors/monitors.component';
 
+
+
 @Component({
   selector: 'app-root',
   standalone: true,
