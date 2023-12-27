@@ -12,8 +12,8 @@
                     (click)="prevDay()">
                     <i class="fas fa-arrow-left"></i> Anterior
                 </button>
-                <p class="text-center" [ngClass]="{'text-red-500': stringContenido2 === 'Ninguno Seleccionado'}">
-                    {{stringContenido2}}</p>
+                <p class="text-center" [ngClass]="{'text-red-500': stringContent2 === 'Ninguno Seleccionado'}">
+                    {{stringContent2}}</p>
                 <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded"
                     (click)="nextDay()">
                     Siguiente <i class="fas fa-arrow-right"></i>
@@ -28,7 +28,7 @@
                         <ng-template #free>
                             <div class="flex justify-center items-center h-full text-white font-bold">
                                 FREE
-                                <button class="absolute top-0 right-0 mt-2 mr-2 text-xl text-bold text-amber-700">
+                                <button class="absolute top-0 right-0 mt-2 mr-2 text-xl text-bold text-amber-700" (click)="openModal()">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -42,7 +42,7 @@
                         <ng-template #free>
                             <div class="flex justify-center items-center h-full text-white font-bold">
                                 FREE
-                                <button class="absolute top-0 right-0 mt-2 mr-2 text-xl text-bold text-amber-700">
+                                <button class="absolute top-0 right-0 mt-2 mr-2 text-xl text-bold text-amber-700" (click)="openModal()">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -56,7 +56,7 @@
                         <ng-template #free>
                             <div class="flex justify-center items-center h-full text-white font-bold">
                                 FREE
-                                <button class="absolute top-0 right-0 mt-2 mr-2 text-xl text-bold text-amber-700">
+                                <button class="absolute top-0 right-0 mt-2 mr-2 text-xl text-bold text-amber-700" (click)="openModal()">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -64,6 +64,51 @@
                     </td>
                 </tr>
             </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div *ngIf="isModalOpen" class="fixed inset-0 overflow-y-auto modal-container">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+        <div
+            class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div class="bg-gray-50 px-4 py-5 sm:p-6">
+                <form>
+                    <div class="mb-4">
+                        <label for="tipoActividad" class="block text-gray-700 text-sm font-bold mb-2">Tipo actividad</label>
+                        <select id="tipoActividad" name="tipoActividad"
+                            class="block w-full rounded-md border-2 border-amber-600 py-1.5 px-2 text-black placeholder:text-black focus:outline-none focus:border-amber-600 sm:text-sm sm:leading-5">
+                            <ng-container *ngFor="let activity of activityTypes">
+                                <option [value]="activity">{{ activity }}</option>
+                            </ng-container>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label for="monitor1" class="block text-gray-700 text-sm font-bold mb-2">Monitor 1</label>
+                        <select id="monitor1" name="monitor1"
+                            class="block w-full rounded-md border-2 border-amber-600 py-1.5 px-2 text-black placeholder:text-black focus:outline-none focus:border-amber-600 sm:text-sm sm:leading-5">
+                            <option value="monitor1">Monitor 1</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label for="monitorN" class="block text-gray-700 text-sm font-bold mb-2">Monitor N:</label>
+                        <select id="monitorN" name="monitorN"
+                            class="block w-full rounded-md border-2 border-amber-600 py-1.5 px-2 text-black placeholder:text-black focus:outline-none focus:border-amber-600 sm:text-sm sm:leading-5">
+                            <option value="monitorN">Monitor N</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button type="submit" class="px-4 py-2 bg-amber-600 text-white rounded-md">Aceptar</button>
+                        <button type="button" class="px-4 py-2 text-gray-500" (click)="closeModal()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

@@ -1,3 +1,10 @@
 .custom-calendar, .demo-inline-calendar-card {
     width: 230px;
 }
+.modal-container {
+    z-index: 1000; /* Puedes ajustar este valor según sea necesario */
+}  
+body {
+    overflow: hidden;
+}
+  
