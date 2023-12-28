@@ -3,7 +3,6 @@ import { LoggerServiceService } from './logger-service.service';
 export interface Activity {
   id?: number;
   fecha: string;
-  lugar: string;
   monitor: Monitor[];
   tipo: ActivityType;
 }
@@ -54,22 +53,19 @@ export class GlobalServiceService {
     this.activitys = [
       {
         id: 0,
-        fecha: "2021-10-01",
-        lugar: "Gimnasio A",
+        fecha: "21/12/2023, 10:00:00",
         monitor: [this.monitors[0]],
         tipo: ActivityType.BodyPump
       },
       {
         id: 1,
-        fecha: "2021-10-02",
-        lugar: "Gimnasio B",
+        fecha: "22/12/2023, 13:30:00",
         monitor: [this.monitors[1]],
         tipo: ActivityType.Pilates
       },
       {
         id: 2,
-        fecha: "2021-10-03",
-        lugar: "Gimnasio C",
+        fecha: "23/12/2023, 17:30:00",
         monitor: [this.monitors[1], this.monitors[2]],
         tipo: ActivityType.Spinning
       }
